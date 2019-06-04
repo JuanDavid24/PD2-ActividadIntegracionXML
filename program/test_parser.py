@@ -1,4 +1,4 @@
-from program.parser.parser import Parser
+from parser.parser import Parser
 import pytest
 
 p = Parser()

@@ -1,18 +1,23 @@
 import redis
 
 class BD (object):
-    #Conexion con el server de Redis:
-    r = redis.Redis(
-        host='redis_server',
-        port=6379,
-        password='',
-        charset="utf-8",
-        decode_responses=True)
+
+    def __init__(self, r=None):
+        # Conexion con el server de Redis:
+        if r is None:
+            self.r = redis.Redis(
+                host='redis_server',
+                port=6379,
+                password='',
+                charset="utf-8",
+                decode_responses=True)
+        else:
+            self.r = r
 
     def guardarListaEnHashBD(self, lista):
         if "id" in lista[0]:    # Es una lista de dicts de los tipos: CC, clientes, cj.ahorro
             for x in lista:
-             self.r.hmset(x["id"], x)
+                self.r.hmset(x["id"], x)
 
         else:                # Es lista de clientes-cuentas (la que relaciona las pk de ambas tablas)
             for x in lista:
