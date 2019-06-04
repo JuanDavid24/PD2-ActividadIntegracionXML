@@ -3,13 +3,6 @@ import pytest
 from parser.parser import Parser
 import fakeredis
 
-
-listaCuentas = [{'id': 'a3', 'balance': '4025'},
-                {'id': 'a5', 'balance': '325'},
-                {'id': 'a2', 'interes': '0.03', 'balance': '15075'},
-                {'id': 'a1', 'interes': '0.03', 'balance': '2500'},
-                {'id': 'a4', 'balance': '-125'}]
-
 listaCuentasC1 = [{'id': 'a2', 'interes': '0.03', 'balance': '15075'},
                   {'id': 'a3', 'balance': '4025'}]
 
@@ -17,7 +10,7 @@ listaCuentasC2 = [{'id': 'a4', 'balance': '-125'}]
 
 #mockea un redis server:
 server = fakeredis.FakeServer()
-r1 = fakeredis.FakeStrictRedis(server=server, decode_responses=True)
+r1 = fakeredis.FakeStrictRedis(server=server, encoding="utf-8", decode_responses=True)
 
 p = Parser()
 bd = BD(r1)
