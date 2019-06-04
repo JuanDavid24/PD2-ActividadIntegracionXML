@@ -10,27 +10,33 @@ class BD (object):
         decode_responses=True)
 
     def guardarListaEnHashBD(self, lista):
-        if "id" in lista[0]:
+        if "id" in lista[0]:    # Es una lista de dicts de los tipos: CC, clientes, cj.ahorro
             for x in lista:
              self.r.hmset(x["id"], x)
-        else:
+
+        else:                # Es lista de clientes-cuentas (la que relaciona las pk de ambas tablas)
             for x in lista:
                 self.r.hmset(x["c_id"] + x["cu_id"], x)
 
-    def printCuentas(self):
-        keys = (self.r.keys("a[0-9]*"))
+    def getListaCuentas(self):
+        keys = (self.r.keys("a[0-9]*"))     #Todas las keys de cuentas
+        listaCuentas = []
         for k in keys:
-            self.printCuentaPorID(k)
+            listaCuentas.append(self.r.hgetall(k))
+        return listaCuentas
 
-    def printCuentaPorID (self, cuentaID):
-        print("Cuenta id: " + cuentaID + "\n \t Balance: " + str(self.r.hget(cuentaID, 'balance')))
-
-    def printCuentasTitular(self, clienteID):
+    def getListaCuentasDelTituar(self, clienteID):
         allkeys = self.r.keys("*")
         print (allkeys)
         keys = self.r.keys(clienteID + "a*")
         print (keys)
-        print("\nID del cliente: " + clienteID)
+
+        listaCuentasID = []
         for k in keys:
-            cuentaID = self.r.hget(k, "cu_id")
-            self.printCuentaPorID(cuentaID)
+            listaCuentasID.append(self.r.hget(k,'cu_id'))
+
+        listaCuentas = []
+        for id in listaCuentasID:
+            listaCuentas.append(self.r.hgetall(id))
+
+        return listaCuentas

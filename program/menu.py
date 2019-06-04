@@ -13,12 +13,22 @@ class Menu (object):
             return item()
 
     def verListaCuentas(self):
-        self.bd.printCuentas()
+        listaCuentas = self.bd.getListaCuentas()
+        for c in listaCuentas:
+            self.printCuenta(c)
 
     def verCuentasTitular(self):
         print ("Ingrese ID del cliente: ")
         clienteID = input()
-        self.bd.printCuentasTitular(clienteID)
+
+        listaCuentas = self.bd.getListaCuentasDelTituar(clienteID)
+
+        print("\nID del cliente: " + clienteID)
+        for c in listaCuentas:
+            self.printCuenta(c)
+
+    def printCuenta(self, cuenta):
+        print("Cuenta id: " + cuenta['id'] + "\n \t Balance: " + cuenta['balance'])
 
     def __init__(self, bd):
         self.bd = bd
