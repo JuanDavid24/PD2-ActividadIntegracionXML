@@ -5,7 +5,7 @@ install:
   - pip3 install -r requirements.txt
   
 before_script:
-    - sudo redis-server /etc/redis/redis.conf --port 6379 
+    - sudo redis-server /etc/redis/redis.conf --port 6500 
 
 script:
   - cd program
