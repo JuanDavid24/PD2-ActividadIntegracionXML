@@ -4,8 +4,8 @@ python:
 install:
   - pip3 install -r requirements.txt
   
-before_script: 
-  - sudo redis_server --port 6739
+service:
+  - redis-server
 
 script:
   - cd program
