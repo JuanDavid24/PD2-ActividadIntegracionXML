@@ -11,7 +11,7 @@ listaCuentasC2 = [{'id': 'a4', 'balance': '-125'}]
 #(este tiene que correr en localhost)
 r1 = redis.Redis(
             host='localhost',
-            port=6379,
+            port=6500,
             password='',
             charset="utf-8",
             decode_responses=True)
