@@ -21,3 +21,11 @@
 y luego, para ejecutar el programa:
 
 `python3 main.py`
+
+<h4>Para correr los tests </h4>
+- Con pytest, desde una nueva terminal, ubicado en `program`.
+- Para **test_BD.py** es necesario tener un server redis corriendo en localhost, puerto 6500. 
+   Dentro de una nueva terminal:
+  
+  `redis-server --port 6500`
+

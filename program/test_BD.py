@@ -13,7 +13,7 @@ r1 = redis.Redis(
             host='localhost',
             port=6500,
             password='',
-            charset="utf-8",
+            encoding="utf-8",
             decode_responses=True)
 p = Parser()
 bd = BD(r=r1)
