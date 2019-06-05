@@ -32,9 +32,9 @@ class BD (object):
 
     def getListaCuentasDelTituar(self, clienteID):
         allkeys = self.r.keys("*")
-        print (allkeys)
+        #print (allkeys)    #-->print de prueba
         keys = self.r.keys(clienteID + "a*")
-        print (keys)
+        #print (keys)       #-->print de prueba
 
         listaCuentasID = []
         for k in keys:

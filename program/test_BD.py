@@ -3,18 +3,12 @@ import pytest
 from parser.parser import Parser
 import redis
 
-
-
 listaCuentasC1 = [{'id': 'a2', 'interes': '0.03', 'balance': '15075'},
                   {'id': 'a3', 'balance': '4025'}]
-
 listaCuentasC2 = [{'id': 'a4', 'balance': '-125'}]
 
-''''#mockea un redis server:
-server = fakeredis.FakeServer()
-r1 = fakeredis.FakeStrictRedis(server=server, encoding="utf-8", decode_responses=True)
-'''
-
+#Creo la conexion con el server de redis que correra los tests en Travis
+#(este tiene que correr en localhost)
 r1 = redis.Redis(
             host='localhost',
             port=6379,
