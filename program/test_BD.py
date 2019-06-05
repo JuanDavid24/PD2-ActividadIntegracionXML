@@ -8,12 +8,12 @@ listaCuentasC1 = [{'id': 'a2', 'interes': '0.03', 'balance': '15075'},
 
 listaCuentasC2 = [{'id': 'a4', 'balance': '-125'}]
 
-#mockea un redis server:
+''''#mockea un redis server:
 server = fakeredis.FakeServer()
 r1 = fakeredis.FakeStrictRedis(server=server, encoding="utf-8", decode_responses=True)
-
+'''
 p = Parser()
-bd = BD(r1)
+bd = BD()
 
 bd.guardarListaEnHashBD(p.cajasAhorro)
 bd.guardarListaEnHashBD(p.ctasCtes)
