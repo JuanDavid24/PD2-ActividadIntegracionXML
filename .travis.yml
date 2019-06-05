@@ -3,7 +3,10 @@ python:
 - "3.6"
 install:
   - pip3 install -r requirements.txt
-# command to run tests
+  
+before_script: 
+  - sudo redis-server /etc/redis/redis.conf --port 6380 --requirepass 'secret'
+
 script:
   - cd program
   - pytest
