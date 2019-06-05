@@ -15,14 +15,14 @@ server = fakeredis.FakeServer()
 r1 = fakeredis.FakeStrictRedis(server=server, encoding="utf-8", decode_responses=True)
 '''
 
-'''r1 = redis.Redis(
+r1 = redis.Redis(
             host='localhost',
             port=6379,
             password='',
             charset="utf-8",
-            decode_responses=True)'''
+            decode_responses=True)
 p = Parser()
-bd = BD()
+bd = BD(r=r1)
 
 bd.guardarListaEnHashBD(p.cajasAhorro)
 bd.guardarListaEnHashBD(p.ctasCtes)
