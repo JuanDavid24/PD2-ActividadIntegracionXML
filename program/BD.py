@@ -9,7 +9,7 @@ class BD (object):
                 host='redis_server',
                 port=6379,
                 password='',
-                charset="utf-8",
+                encoding="utf-8",
                 decode_responses=True)
         else:
             self.r = r

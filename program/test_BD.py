@@ -1,7 +1,9 @@
 from BD import BD
 import pytest
 from parser.parser import Parser
-import fakeredis
+import redis
+
+
 
 listaCuentasC1 = [{'id': 'a2', 'interes': '0.03', 'balance': '15075'},
                   {'id': 'a3', 'balance': '4025'}]
@@ -12,6 +14,13 @@ listaCuentasC2 = [{'id': 'a4', 'balance': '-125'}]
 server = fakeredis.FakeServer()
 r1 = fakeredis.FakeStrictRedis(server=server, encoding="utf-8", decode_responses=True)
 '''
+
+'''r1 = redis.Redis(
+            host='localhost',
+            port=6379,
+            password='',
+            charset="utf-8",
+            decode_responses=True)'''
 p = Parser()
 bd = BD()
 
