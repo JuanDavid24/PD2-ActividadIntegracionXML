@@ -1,11 +1,14 @@
 language: python
 python: 
-- "3.6"
+  - "3.6"
 install:
   - pip3 install -r requirements.txt
   
 before_script:
     - sudo redis-server /etc/redis/redis.conf --port 6500
+
+env:
+  -TRAVIS_ENV=1
 
 script:
   - cd program
