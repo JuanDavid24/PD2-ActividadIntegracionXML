@@ -16,7 +16,7 @@ def main():
     bd.guardarListaEnHashBD(p.cajasAhorro)
     bd.guardarListaEnHashBD(p.ctasCtes)
     bd.guardarListaEnHashBD(p.clientes)
-    bd.guardarListaEnHashBD(p.clientesCuentas)
+    bd.guardarListaClientesCuentasEnHashBD(p.clientesCuentas)
 
     while True:
         m.mostrarMenu()

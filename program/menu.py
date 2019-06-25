@@ -18,14 +18,20 @@ class Menu (object):
             self.printCuenta(c)
 
     def verCuentasTitular(self):
-        print ("Ingrese ID del cliente: ")
+        print("Ingrese ID del cliente: ")
         clienteID = input()
 
-        listaCuentas = self.bd.getListaCuentasDelTituar(clienteID)
+        if self.bd.existeCliente(clienteID):
+            listaCuentas = self.bd.getListaCuentasDelTitular(clienteID)
+            print("\nID del cliente: " + clienteID)
 
-        print("\nID del cliente: " + clienteID)
-        for c in listaCuentas:
-            self.printCuenta(c)
+            if listaCuentas == []:
+                print("\nEl cliente no posee cuentas")
+            else:
+                for c in listaCuentas:
+                    self.printCuenta(c)
+        else:
+            print("\nEl cliente no existe en la base de datos!")
 
     def printCuenta(self, cuenta):
         print("Cuenta id: " + cuenta['id'] + "\n \t Balance: " + cuenta['balance'])
